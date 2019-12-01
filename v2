@@ -1,0 +1,44 @@
+<html>
+<head>
+<title> Jon INF1339 Project 2</title>
+<style> 
+    .testclass{ font-family:arial,Helvetica,sans-serif;
+}
+    .output {color: chartreuse;
+}
+</style>
+</head>
+
+<body>
+  <h3>API Project V2</h3>
+  <h3>New York Times API: Articles from all time about rainbows</h3>
+  <p id="test_output" class="output"></p>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+
+<script>
+
+  var apiKey = "3nkQklPgYoaAi9gwy1aNJvpECrjXnOH9";
+  var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=rainbow&api-key=" + apiKey;
+  var articleCount = 0;
+  
+  function setup() {
+    noCanvas();
+    loadJSON(url, gotData);
+  }
+  function gotData(data) {
+    var text = "";
+    for (i=0; i < data.response.docs.length; i++) {
+      text = text + "<br / />" + data.response.docs[i].headline.main;
+    }
+    document.getElementById("test_output").innerHTML = text;
+  }
+</script>
+
+</html>
+
+
+
+//New York Times API Key: 3nkQklPgYoaAi9gwy1aNJvpECrjXnOH9</p>
+//map box token: //pk.eyJ1IjoidGhlYmlnbWVlY2hpIiwiYSI6ImNrMTZwdWdxczAzbWMzY3RidmIwbWF5cGkifQ.wdixpUlItun5
